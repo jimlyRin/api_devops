@@ -18,6 +18,7 @@ env:
   AZURE_WEBAPP_NAME: 'GAD-WebAppDemo'    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '3.1.100'           # set this to the dot net version to use
+  ALANAPPSERVICEPROFILE: '<publishData><publishProfile profileName="githubactions-demo - Web Deploy" publishMethod="MSDeploy" publishUrl="waws-prod-mwh-049.publish.azurewebsites.windows.net:443" msdeploySite="githubactions-demo" userName="$githubactions-demo" userPWD="cHQ1oz2w1dWjC6NRFKDibktoKCj5b88pkQpzJn259BlTLw13HJpdpP5ahsk2" destinationAppUrl="http://githubactions-demo.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="githubactions-demo - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-mwh-049.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="githubactions-demo\$githubactions-demo" userPWD="cHQ1oz2w1dWjC6NRFKDibktoKCj5b88pkQpzJn259BlTLw13HJpdpP5ahsk2" destinationAppUrl="http://githubactions-demo.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>'
 
 jobs:
   build-and-deploy:
@@ -44,5 +45,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: '${{ env.AZURE_WEBAPP_NAME }}' # Replace with your app name
-          publish-profile: '${{ secrets.ALANAPPSERVICEPROFILE }}'
+          publish-profile: '${{ env.ALANAPPSERVICEPROFILE }}'
           package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
